@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -62,4 +64,13 @@ class User extends Authenticatable
     protected $dates = [
         'bartending_course_date',
     ];
+
+    public static function createWithRandomPassword(array $attributes)
+    {
+        $password = Str::random(12);
+
+        $user = static::create(array_merge($attributes, ['password' => Hash::make($password)]));
+
+        return [$user, $password];
+    }
 }

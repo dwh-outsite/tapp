@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire\Users;
 
+use App\Mail\BartenderCreated;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class CreateUserForm extends Component
@@ -15,13 +17,15 @@ class CreateUserForm extends Component
 
     protected $rules = [
         'name' => ['required', 'string', 'max:255'],
-        'email' => ['required', 'string', 'email', 'max:255'],
+        'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
         'password' => []
     ];
 
     public function create()
     {
-        User::create($this->validate());
+        [$user, $password] = User::createWithRandomPassword($this->validate());
+
+        Mail::to($user)->send(new BartenderCreated($user, $password));
 
         $this->reset();
         $this->resetValidation();

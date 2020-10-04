@@ -20,6 +20,8 @@
                     @foreach ($this->users->sortBy('name') as $user)
                         <div class="flex items-center justify-between">
                             <div>
+                                <img class="h-8 w-8 rounded-full object-cover inline mr-2" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" />
+
                                 {{ $user->name }}
 
 

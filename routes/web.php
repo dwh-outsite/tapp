@@ -22,7 +22,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/users', function () {
-        return view('users.index');
-    })->name('users');
+    Route::view('/bartenders','bartenders.index')->name('bartenders');
 });

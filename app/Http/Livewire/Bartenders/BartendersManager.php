@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Users;
+namespace App\Http\Livewire\Bartenders;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Laravel\Jetstream\Jetstream;
 use Livewire\Component;
 
-class UsersManager extends Component
+class BartendersManager extends Component
 {
     protected $listeners = [
         'created' => '$refresh',
@@ -40,6 +38,6 @@ class UsersManager extends Component
 
     public function render()
     {
-        return view('users.users-manager');
+        return view('bartenders.bartenders-manager');
     }
 }

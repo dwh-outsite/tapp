@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Livewire\Users\CreateUserForm;
+use App\Http\Livewire\Bartenders\CreateBartenderForm;
 use App\Mail\BartenderCreated;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use function Pest\Livewire\livewire;
 
 it('can create a bartender', function () {
-    livewire(CreateUserForm::class)
+    livewire(CreateBartenderForm::class)
         ->set('name', 'Henk')
         ->set('email', 'henk@h-mail.com')
         ->call('create');
@@ -18,12 +18,12 @@ it('can create a bartender', function () {
 });
 
 it('can generate a unique password hash for new bartenders', function () {
-    livewire(CreateUserForm::class)
+    livewire(CreateBartenderForm::class)
         ->set('name', 'Henk')
         ->set('email', 'henk@h-mail.com')
         ->call('create');
 
-    livewire(CreateUserForm::class)
+    livewire(CreateBartenderForm::class)
         ->set('name', 'Astrid')
         ->set('email', 'astrid@h-mail.com')
         ->call('create');
@@ -36,7 +36,7 @@ it('can generate a unique password hash for new bartenders', function () {
 it('can notify a new bartender that their account is created', function () {
     Mail::fake();
 
-    livewire(CreateUserForm::class)
+    livewire(CreateBartenderForm::class)
         ->set('name', 'Henk')
         ->set('email', 'henk@h-mail.com')
         ->call('create');
@@ -49,33 +49,33 @@ it('can notify a new bartender that their account is created', function () {
 });
 
 it('cannot create a bartender without a name')
-    ->livewire(CreateUserForm::class)
+    ->livewire(CreateBartenderForm::class)
     ->set('email', 'henk@h-mail.com')
     ->call('create')
     ->assertHasErrors('name');
 
 it('cannot create a bartender without an email address')
-    ->livewire(CreateUserForm::class)
+    ->livewire(CreateBartenderForm::class)
     ->set('name', 'Henk')
     ->call('create')
     ->assertHasErrors('email');
 
 it('cannot create a bartender with an invalid email')
-    ->livewire(CreateUserForm::class)
+    ->livewire(CreateBartenderForm::class)
     ->set('name', 'Henk')
     ->set('email', 'henk-mail')
     ->call('create')
     ->assertHasErrors('email');
 
 it('cannot create a bartender with an duplicate email', function () {
-    livewire(CreateUserForm::class)
+    livewire(CreateBartenderForm::class)
         ->set('name', 'Henk')
         ->set('email', 'henk@h-mail.com')
         ->call('create');
 
     expect(User::exists())->toBeTrue();
 
-    livewire(CreateUserForm::class)
+    livewire(CreateBartenderForm::class)
         ->set('name', 'Astrid')
         ->set('email', 'henk@h-mail.com')
         ->call('create')

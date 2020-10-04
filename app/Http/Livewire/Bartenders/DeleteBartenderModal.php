@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire\Users;
+namespace App\Http\Livewire\Bartenders;
 
 use App\Models\User;
 use Livewire\Component;
 
-class DeleteUserModal extends Component
+class DeleteBartenderModal extends Component
 {
     public $active = false;
     public ?User $user = null;
@@ -31,6 +31,6 @@ class DeleteUserModal extends Component
 
     public function render()
     {
-        return view('users.delete-user-modal');
+        return view('bartenders.delete-bartender-modal');
     }
 }

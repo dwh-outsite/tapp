@@ -50,6 +50,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'bartending_course' => 'boolean',
+        'iva_certificate' => 'boolean',
     ];
 
     /**

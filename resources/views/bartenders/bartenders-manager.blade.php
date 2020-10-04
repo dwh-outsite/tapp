@@ -1,6 +1,5 @@
 <div>
-    <!-- Generate API Token -->
-    @livewire('users.create-user-form')
+    @livewire('bartenders.create-bartender-form')
 
     <x-jet-section-border />
 
@@ -67,7 +66,7 @@
         </x-jet-action-section>
     </div>
 
-    @livewire('users.edit-user-modal')
+    @livewire('bartenders.edit-bartender-modal')
 
-    @livewire('users.delete-user-modal')
+    @livewire('bartenders.delete-bartender-modal')
 </div>

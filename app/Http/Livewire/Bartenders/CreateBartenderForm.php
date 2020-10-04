@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\Users;
+namespace App\Http\Livewire\Bartenders;
 
 use App\Mail\BartenderCreated;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
-class CreateUserForm extends Component
+class CreateBartenderForm extends Component
 {
     public $name = '';
     public $email = '';
@@ -35,6 +34,6 @@ class CreateUserForm extends Component
 
     public function render()
     {
-        return view('users.create-user-form');
+        return view('bartenders.create-bartender-form');
     }
 }

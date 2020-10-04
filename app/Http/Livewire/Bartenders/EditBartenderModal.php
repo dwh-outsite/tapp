@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Users;
+namespace App\Http\Livewire\Bartenders;
 
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class EditUserModal extends Component
+class EditBartenderModal extends Component
 {
     use WithFileUploads;
 
@@ -52,6 +52,6 @@ class EditUserModal extends Component
 
     public function render()
     {
-        return view('users.edit-user-modal');
+        return view('bartenders.edit-bartender-modal');
     }
 }

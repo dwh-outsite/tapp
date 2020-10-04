@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Livewire\Bartenders\BartendersManager;
 use App\Models\User;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
-use function Pest\Livewire\livewire;
 
 beforeEach(function () {
    User::factory()->count(10)->create();

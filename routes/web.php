@@ -23,4 +23,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('dashboard');
 
     Route::view('/bartenders','bartenders.index')->name('bartenders');
+
+    Route::view('/events','events.index')->name('events');
 });
